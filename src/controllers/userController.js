@@ -142,10 +142,10 @@ export const postEdit = async (req, res) => {
     const pageTitle = "Edit Profile";
     const {
         session: {
-            user: { _id}
+            user: { _id, avatarUrl}
         },
         body: { name, email, username, location },
-        file
+        file,
     } = req;
     if (req.session.user.email !== email) {
         const exist = User.exists({ email });
@@ -160,7 +160,11 @@ export const postEdit = async (req, res) => {
     }
 
     const updatedUser = await User.findByIdAndUpdate(_id, {
-        name, email, username, location
+        avatarUrl: file ? file.path: avatarUrl,
+        name,
+        email,
+        username,
+        location
     }, { new: true });
     req.session.user = updatedUser;
     return res.redirect("/users/edit");
