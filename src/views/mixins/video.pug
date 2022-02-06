@@ -1,9 +1,17 @@
 mixin video(video)
-    div 
-        h4 
-            a(href=`/videos/${video.id}`)=video.title
-        p=video.description
-        each hashtag in video.hashtags
-            li=hashtag
-        small=video.createdAt
-        hr
+    a(href=`/videos/${video.id}`)
+        div.video-mixin
+            div.video-mixin_thumb
+            div.video-mixin_grid
+            
+                img(src="/" + video.owner.avatarUrl).video-mixin_avatar
+                div.video-mixin_data
+                    if String(video.title).length > 24
+                        h3.video-mixin_title #{String(video.title).slice(0, (String(video.title).length - 24 + 3) * -1) + "..."}
+                    else 
+                        h3.video-mixin_title=video.title
+                    div.video-mixin_meta
+                        small #{video.owner.username}
+                        br
+                        small #{video.meta.views}회
+

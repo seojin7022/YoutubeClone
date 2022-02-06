@@ -1,0 +1,12 @@
+.social_login {
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  padding-top: 30px;
+  margin-top: 30px;
+  .social_btn-github {
+    color: black;
+    background-color: transparent;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
