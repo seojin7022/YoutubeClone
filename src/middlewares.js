@@ -3,6 +3,7 @@ import multer from "multer";
 export const localMiddleware = (req, res, next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
     res.locals.loggedInUser = req.session.user;
+    res.locals.session = req.session;
     next();
 };
 
@@ -20,6 +21,21 @@ export const publicOnlyMiddleware = (req, res, next) => {
     } else {
         return res.redirect("/");
     }
+}
+
+export const pathOnlyMiddleware = (req, res, next) => {
+    if (req.session.file === null) {
+        return res.redirect("/");
+    } else {
+        next();
+    }
+}
+
+export const resetMiddleware = (req, res, next) => {
+    if (req.session && req.url !== "/videos/upload/details") {
+        req.session.file = null;
+    }
+    next();
 }
 
 export const avatarUpload = multer({ dest: "uploads/avatars/" , limits: {

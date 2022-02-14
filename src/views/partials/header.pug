@@ -1,19 +1,31 @@
 header
+    span#triggerBtn
+        i.fa-solid.fa-bars
     a(href="/").header_logo
         i.fab.fa-youtube
             span YouTube
+    form(method="GET", action="/search").search_form
+        input(placeholder=" 검색",name="keyword", type="text")
+        button
+            i.fas.fa-search
     nav 
         ul 
-            li 
-                a(href="/search")
-                    i.fas.fa-search
             if loggedIn
                 li 
-                    a(href="/videos/upload") Upload Video
+                    button.upload-button
+                        i.fas.fa-upload
+                    div.upload-container.hidden
+                        div
+                            a(href="/videos/upload") 동영상 업로드
+                        div
+                            a(href="/videos/record") 동영상 녹화
+                        
                 li 
-                    a(href="/users/edit") Edit Profile
+                    a(href="/users/edit", title="프로필 수정")
+                        i.fas.fa-user-edit
                 li 
-                    a(href="/users/logout") Log out
+                    a(href="/users/logout", title="로그아웃")
+                        i.fas.fa-sign-out-alt
                 li 
                     a(href=`/users/${loggedInUser._id}`)
                         if loggedInUser.avatarUrl === ""
@@ -22,6 +34,9 @@ header
                             img.header_avatar(src="/" + loggedInUser.avatarUrl)
             else
                 li 
-                    a(href="/login") Login
+                    a(href="/login", title="로그인")
+                        i.fas.fa-sign-in-alt
                 li 
-                    a(href="/join").header_btn Join
+                    a(href="/join").header_btn 가입
+    
+    

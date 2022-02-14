@@ -1,19 +1,21 @@
 .search_form {
-  margin-bottom: 60px;
   display: flex;
-  align-items: center;
-  position: relative;
+  justify-content: space-between;
   background-color: transparent;
   padding: 0;
+  margin-top: auto;
+  border: none;
+  width: 60%;
+  position: relative;
+  top: 5px;
+  height: 30px;
 
   input {
     all: unset;
-    margin-bottom: 15px;
-    padding: 10px;
     font-size: 16px;
     color: black;
-    width: 100%;
-    border: 1px solid black;
+    width: 200%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     &::placeholder {
       color: rgba(0, 0, 0, 0.7);
     }
@@ -22,11 +24,12 @@
     all: unset;
   }
   button {
-    position: absolute;
-    right: 15px;
-    top: -5px;
+    background-color: rgba(200, 200, 200, 0.5);
+    width: 20%;
+    height: 28px;
     text-align: center;
-    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 0;
     cursor: pointer;
   }
 }

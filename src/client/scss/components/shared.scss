@@ -6,13 +6,15 @@
 
 .video_grid {
   display: grid;
-  gap: 50px;
+  gap: 20px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .auth_switch {
+  display: inline;
+  color: #1a73e8;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
   a:hover {
     text-decoration: underline;
   }

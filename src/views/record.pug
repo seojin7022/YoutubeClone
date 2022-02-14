@@ -1,0 +1,9 @@
+extends base
+
+block content
+    div.recorder-container.hidden
+        video#preview
+        button#recordBtn 녹화 시작
+    div#loading 로딩중...
+block scripts
+    script(src="/static/js/recorder.js")

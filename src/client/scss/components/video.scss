@@ -1,30 +1,40 @@
 .video-mixin {
+  padding-bottom: 15px;
+  z-index: 0;
   .video-mixin_thumb {
-    height: 140px;
+    height: auto;
     width: 100%;
-    background-color: gray;
+    z-index: 0;
   }
   .video-mixin_grid {
     display: grid;
     grid-template-columns: 20% 80%;
+    gap: 5px;
   }
   .video-mixin_avatar {
     margin-top: 10px;
-    width: 40px;
-    height: 40px;
+    margin-left: 10px;
+    width: 35px;
+    height: 35px;
     border-radius: 100%;
   }
   .video-mixin_data {
+    display: flex;
+    flex-direction: column;
     .video-mixin_title {
-      font-size: 18px;
+      font-size: 15px;
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
+      font-weight: 600;
     }
     .video-mixin_meta {
-      position: relative;
-      top: 5px;
-      margin-top: 7px;
-      font-size: 12px;
+      font-size: 10px;
     }
+  }
+  transition-duration: 200ms;
+  &:hover {
+    transform: scale(1.2, 1.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 99;
   }
 }

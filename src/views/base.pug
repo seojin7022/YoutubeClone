@@ -7,7 +7,10 @@ html(lang="ko")
     body
         include partials/header
         hr
+        include partials/side
         main
             block content
         include partials/footer.pug
     script(src="/static/js/main.js")
+    block scripts
+    script(src="/static/js/uploadButton.js")

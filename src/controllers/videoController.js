@@ -52,29 +52,38 @@ export const getUpload = (req, res) => {
     return res.render("upload", { pageTitle: "Upload Video" });
 };
 
-export const postUpload = async (req, res) => {
+export const postUpload = (req, res) => {
+    req.session.file = req.file;
+    return res.redirect("/videos/upload/details");    
+};
+
+export const getDetail = (req, res) => {
+    return res.render("detail");
+}
+
+export const postDetail = async (req, res) => {
     const { user: {_id} } = req.session;
-    const {path: fileUrl} = req.file;
     const { title, description, hashtags } = req.body;
+    const {path} = req.file;
     try {
         const newVideo = await Video.create({
             title,
             description,
             hashtags: Video.formatHashtags(hashtags),
-            fileUrl,
+            fileUrl: req.session.file.path,
+            thumbUrl: path,
             owner: _id,
         });
         const user = await User.findById(_id);
         user.videos.push(newVideo._id);
         await user.save()
+        req.session.file = null;
         return res.redirect("/");
     } catch (error) {
         console.log(error);
-        return res.status(400).render("upload", { pageTitle: "Upload Video", errorMessage: error._message });
+        return res.status(400).render("detail", { pageTitle: "Upload Video", errorMessage: error._message });
     }
-    
-    
-};
+}
 
 export const deleteVideo = async (req, res) => {
     const { user: { _id } } = req.session;
@@ -102,3 +111,18 @@ export const search = async (req, res) => {
     }
     return res.render("search", {pageTitle: "Search", videos});
 };
+
+export const registerView = async (req, res) => {
+    const { id } = req.params;
+    const video = await Video.findById(id);
+    if (!video) {
+        return res.sendStatus(404);
+    }
+    video.meta.views = video.meta.views + 1;
+    await video.save();
+    return res.sendStatus(200);
+}
+
+export const record = (req, res) => {
+    return res.render("record", { pageTitle: "동영상 녹화" });
+}
