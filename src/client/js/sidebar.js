@@ -27,7 +27,7 @@ function openNav() {
         sidenav.style.width = "0";
     } else {
         isOpen = true;
-        sidenav.style.width = "250px";
+        sidenav.style.width = "13vw";
     }
 }
 

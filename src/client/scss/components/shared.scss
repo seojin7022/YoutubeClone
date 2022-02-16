@@ -5,9 +5,11 @@
 }
 
 .video_grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  gap: 10px;
+  flex-flow: row wrap;
+  width: 85vw;
+  margin-left: 5vw;
 }
 
 .auth_switch {

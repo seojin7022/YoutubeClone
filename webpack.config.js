@@ -13,9 +13,9 @@ module.exports = {
         uploadButton: "./src/client/js/uploadButton.js",
         recorder: "./src/client/js/recorder.js",
         detail: "./src/client/js/detail.js",
+        comment: "./src/client/js/comment.js",
     },
-    watch: true,
-    mode: "development",
+    
     output: {
         filename: 'js/[name].js',
         path: path.resolve(__dirname, "assets"),

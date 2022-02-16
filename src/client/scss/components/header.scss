@@ -1,19 +1,19 @@
 header {
   padding: 0 50px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   background-color: white;
   #triggerBtn {
     z-index: 3;
-    position: relative;
-    right: 20px;
+    position: fixed;
+    left: 25px;
     cursor: pointer;
   }
   .header_logo {
     color: $red;
     font-size: 25px;
+    position: fixed;
     span {
       color: black;
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
